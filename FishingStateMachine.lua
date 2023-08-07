@@ -46,7 +46,7 @@ local function _changeState(state, overwriteFight)
     EVENT_MANAGER:UnregisterForEvent(this.name .. "OnSlotUpdate", EVENT_INVENTORY_SINGLE_SLOT_UPDATE)
 
     if state == this.state.depleted then
-        EVENT_MANAGER:RegisterForUpdate(this.name .. "STATE_DEPLETED_END", 3000, function()
+        EVENT_MANAGER:RegisterForUpdate(this.name .. "STATE_DEPLETED_END", 2000, function()
             if this.currentState == this.state.depleted then _changeState(this.state.idle) end
         end)
 
@@ -61,7 +61,7 @@ local function _changeState(state, overwriteFight)
         end)
 
     elseif state == this.state.reelin then
-        EVENT_MANAGER:RegisterForUpdate(this.name .. "STATE_REELIN_END", 3000, function()
+        EVENT_MANAGER:RegisterForUpdate(this.name .. "STATE_REELIN_END", 1000, function()
             if this.currentState == this.state.reelin then _changeState(this.state.idle) end
         end)
     end
